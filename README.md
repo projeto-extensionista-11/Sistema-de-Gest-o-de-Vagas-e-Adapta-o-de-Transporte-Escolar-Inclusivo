@@ -155,7 +155,8 @@ Por tratar **dados pessoais de crianças** e **informações sensíveis de saúd
 │   │   └── audit/
 │   └── manage.py
 ├── docs/                     # Documentação técnica, modelagem e arquitetura
-│   └── modelagem-arquitetura-v0.1.md
+│   ├── modelagem-arquitetura-v0.1.md
+│   └── premissa_projeto.md
 ├── frontend/                 # Aplicação Next.js + TypeScript + Tailwind (em estruturação)
 └── README.md
 ```
