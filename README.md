@@ -1,81 +1,140 @@
-﻿# 🚌 Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo
+﻿# 🚌 Projeto 11: Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo
 
-Sistema desenvolvido como Projeto Extensionista para organizar o cadastro de estudantes e responsáveis, gestão de vagas escolares, adaptação de frota acessível (veículos com elevador hidráulico e necessidades específicas de deslocamento), planejamento de rotas, execução de viagens, check-in/check-out pelo aplicativo do monitor, monitoramento em mapa e notificações às famílias.
-
----
-
-## 🎯 Objetivos do Projeto
-
-- **Gestão de Vagas e Solicitações:** Organizar pedidos de transporte escolar inclusivo, alocação de vagas e vínculos ativos (`Enrollment`).
-- **Planejamento Logístico:** Estruturar rotas e paradas considerando endereços, horários e características de acessibilidade dos veículos.
-- **Operação em Tempo Real:** Registrar embarque e desembarque (`BOARDING` / `ALIGHTING`) com confirmação operacional pelo monitor.
-- **Comunicação com Famílias:** Notificar responsáveis autorizados sobre eventos relevantes da viagem.
-- **Monitoramento da Frota:** Acompanhar localização dos veículos em mapa e apoiar a gestão operacional com auditoria.
+> Módulo logístico integrado ao transporte público e escolar para gestão de vagas, otimização de rotas de vans adaptadas (com elevador hidráulico) e monitoramento em tempo real do embarque e desembarque de estudantes com deficiência (**LBI — Lei Brasileira de Inclusão, Art. 28 e 48**).
 
 ---
 
-## 👥 Equipe e Divisão de Papéis
+## 📌 1. Visão Geral e Negócio (BRD — O "Porquê")
 
-| Área | Integrantes | Responsabilidades Principais |
+### Problema Solucionado
+A evasão escolar causada pela falta ou ineficiência do transporte adaptado, rotas mal planejadas que submetem estudantes a longas horas de deslocamento e a ausência de informações em tempo real para as famílias e escolas.
+
+### Público-Alvo
+- Gestores da frota do transporte escolar municipal/institucional
+- Motoristas de vans adaptadas
+- Monitores de transporte inclusivo
+- Famílias e responsáveis de estudantes com deficiência
+- Direções e equipes de apoio das escolas receptoras
+
+### Metas de Negócio
+- Garantir **100% de acesso** dos alunos com deficiência à escola.
+- Otimizar custos de combustível e reduzir o tempo de permanência dos alunos nos veículos.
+- Eliminar o risco de esquecimento de alunos no veículo por meio de check-in/check-out auditável.
+- Dar transparência e tranquilidade às famílias com notificações e rastreamento em tempo real.
+
+### Mapa de Processos (`As-Is` → `To-Be`)
+
+| Cenário | Fluxo Operacional |
+| :--- | :--- |
+| **As-Is (Atual)** | Rotas de vans adaptadas organizadas em papel → Motorista faz trajeto por intuição → Atrasos de horas e alunos perdendo aulas → Pais sem notícias do embarque/desembarque. |
+| **To-Be (Proposto)** | Solicitação de vaga no sistema → Otimizador logístico gera rota inteligente → Monitor marca check-in/check-out no app da van → Notificação em tempo real para pais, escola e gestão da frota. |
+
+---
+
+## 📋 2. Especificação do Sistema (PRD — O "O quê")
+
+### Funcionalidades-Chave
+- **Cadastro de Alunos e Necessidades Específicas:** Registro de tipo de cadeira de rodas, necessidade de acompanhante, auxílio no embarque e observações restritas de mobilidade.
+- **Gestão de Vagas e Solicitações:** Controle de capacidade total e adaptada por escola/ano letivo, aprovação de solicitações e emissão de vínculo de transporte (`Enrollment`).
+- **Otimizador de Rotas Logísticas:** Traçado inteligente considerando endereços, paradas e especificidades dos veículos adaptados.
+- **App do Monitor (Check-in/Check-out):** Confirmação rápida de embarque e desembarque com 1 toque ou QR Code.
+- **Painel de Frota e Telemetria:** Monitoramento da frota em mapa em tempo real, indicadores operacionais e previsão de chegada na escola.
+
+### Histórias de Usuário e Critérios de Aceite
+
+- **US01 — Confirmação de Embarque/Desembarque**
+  - *Como* Monitor da Van Escolar, *quero* dar check-in no aluno ao embarcá-lo na rampa da van, *para* notificar a família e a escola instantaneamente.
+  - *Critérios de Aceite:* Clique único no nome do aluno no app do monitor; envio imediato de notificação push para os responsáveis autorizados.
+- **US02 — Traçado Inteligente de Rota**
+  - *Como* Gestor da Frota, *quero* que o sistema calcule a rota mais rápida considerando o endereço de 8 alunos cadeirantes, *para* reduzir o tempo de permanência no veículo.
+  - *Critérios de Aceite:* Geração automática de itinerário no mapa com estimativa de horário de chegada em cada residência e na escola.
+
+### Personas Atendidas
+
+| Persona | Perfil | Necessidade Principal no Sistema |
 | :--- | :--- | :--- |
-| **Frontend** | Eduardo, Erick | Interface web (painel de gestão e portal), experiência do usuário, acessibilidade, consumo da API e visualização em mapas |
-| **Backend** | Rita, Erick | API REST, regras de negócio, validações, permissões, integrações, notificações e serviços de roteamento |
-| **Banco de Dados e Modelagem** | Edmilson, Karina, Eduardo | Modelagem conceitual/lógica (DER), dicionário de dados, integridade relacional, PostGIS e segurança/LGPD |
+| **Seu Valdir ("Valdivino")** | Motorista (56 anos, 18 anos de experiência) | Interface limpa, botões grandes e rota integrada com orientação clara sem distrações ao dirigir. |
+| **Marisa ("Mari")** | Monitora da Van (38 anos) | App móvel ágil para check-in/check-out com **1 toque** após operar a rampa elevatória e o cinto. |
+| **Solange ("Sol")** | Mãe de aluno com tetraplegia (32 anos) | Rastreamento da van no mapa em tempo real e notificações push imediatas de embarque e chegada. |
+| **Eng. Fernando ("Nando")** | Gestor da Frota Municipal (45 anos) | Painel com telemetria em mapa, otimização de rotas, redução de quilometragem e tempo médio de viagem. |
+| **Profa. Tássia Camargo** | Diretora de Escola Inclusiva (48 anos) | Portal web com horário estimado de chegada das vans para organizar os monitores de recepção no portão. |
 
 ---
 
-## 🏗️ Arquitetura e Stack Tecnológica
+## 👥 3. Equipe e Divisão de Papéis
 
-A arquitetura adota um **monólito modular no backend** (concentrando regras de negócio e operações sensíveis na API) combinado a um **frontend moderno tipado** e banco relacional com suporte geoespacial.
-
-### Frontend
-- **Next.js (App Router)** + **React** + **TypeScript**
-- **Tailwind CSS** + **shadcn/ui** (componentes acessíveis baseados em Radix UI, com foco em acessibilidade e navegação por teclado)
-- **TanStack Query (React Query)** para cache, sincronização e estado de requisições
-- **React Hook Form + Zod** para formulários e validação com tipagem compartilhada
-- **Leaflet (`react-leaflet`) / Mapbox** para visualização de rotas, paradas e rastreamento da frota em mapa
-- **Lucide Icons** para iconografia consistente
-- **PWA / Mobile-first** para o fluxo do monitor (check-in/check-out em campo com suporte a leitura de QR Code)
-- **ESLint + Prettier** para padronização e qualidade de código
-
-### Backend
-- **Python** + **Django** + **Django REST Framework (DRF)**
-- **Django Channels** ou **Supabase Realtime** *(em avaliação para eventos e localização em tempo real)*
-- **Google OR-Tools** *(em avaliação para otimização de itinerários e rotas)*
-- **Firebase Cloud Messaging (FCM)** *(proposta para notificações push)*
-
-### Banco de Dados e Infraestrutura
-- **PostgreSQL** gerenciado pelo **Supabase**
-- **PostGIS** para consultas espaciais, coordenadas (`SRID 4326`), distâncias e pontos de parada
-- **Supabase Storage** *(opcional, com buckets privados e URLs assinadas para documentos)*
+| Área | Integrantes | Responsabilidades |
+| :--- | :--- | :--- |
+| **Frontend** | Eduardo, Erick | Desenvolvimento da interface web e mobile-first (painéis, formulários, acessibilidade, mapas e consumo da API) |
+| **Backend** | Rita, Erick | API REST, regras de negócio, autenticação/permissões, otimização de rotas, tempo real e notificações |
+| **Banco de Dados e Modelagem** | Edmilson, Karina, Eduardo | Modelagem conceitual/lógica (DER), dicionário de dados, integridade relacional, PostGIS e políticas de proteção de dados |
 
 ---
 
-## 🧩 Escopo Funcional e Domínios
+## 🛠️ 4. Stack Tecnológica e Justificativas (Por que cada tecnologia?)
+
+A arquitetura segue o modelo de **monólito modular no backend** (centralizando regras de negócio, validações e LGPD na API) integrado a um **frontend tipado e responsivo** e a um **banco relacional com extensão geoespacial**.
+
+### 🎨 Frontend
+
+| Tecnologia | Por que usar neste projeto? |
+| :--- | :--- |
+| **Next.js (App Router) + React** | Permite construir em uma única base tanto os painéis administrativos (Gestor e Diretora) quanto as visões leves para celular (Monitor e Famílias), com roteamento organizado, boa performance e suporte nativo a SSR/CSR. |
+| **TypeScript** | Garante segurança de tipos nas estruturas de dados complexas do domínio (alunos, necessidades de mobilidade, rotas, viagens e eventos), reduzindo bugs de integração entre Frontend e Backend. |
+| **Tailwind CSS** | Acelera a construção de interfaces consistentes e responsivas (desktop para gestão e mobile-first com botões grandes para o motorista/monitor em campo). |
+| **shadcn/ui (Radix UI)** | Como o projeto trata de **transporte inclusivo**, a acessibilidade da interface é indispensável. O `shadcn/ui` oferece componentes acessíveis por padrão (navegação por teclado, foco e atributos ARIA) e totalmente customizáveis com Tailwind. |
+| **TanStack Query (React Query)** | Gerencia cache, estados de carregamento/erro e atualização automática de dados dinâmicos (status de solicitações, lista de embarque e telemetria) sem código repetitivo. |
+| **React Hook Form + Zod** | O sistema possui cadastros sensíveis e extensos (`Student`, `Guardian`, `StudentNeed`, `Vehicle`). Essa dupla garante formulários performáticos e validação rigorosa no cliente antes de enviar à API. |
+| **Leaflet (`react-leaflet`) / Mapbox** | Essencial para renderizar escolas, paradas (`RouteStop`), itinerários e a posição em tempo real das vans (`VehicleLocation`) no painel do gestor e no acompanhamento das famílias. |
+| **PWA / Mobile-first + QR Code** | Permite que a monitora utilize o fluxo de check-in/check-out diretamente pelo navegador do celular com experiência semelhante a aplicativo nativo, botões de 1 toque e suporte opcional a leitura de QR Code. |
+| **Lucide Icons + ESLint + Prettier** | Padronização visual (ícones claros para usuários com letramento digital básico) e consistência de código entre toda a equipe de frontend. |
+
+### ⚙️ Backend
+
+| Tecnologia | Por que usar neste projeto? |
+| :--- | :--- |
+| **Python + Django + Django REST Framework (DRF)** | Produtividade alta para construir um monólito modular bem estruturado, com ORM maduro, sistema de migrations robusto, autenticação customizada e controle fino de permissões por perfil e organização. |
+| **Django Channels ou Supabase Realtime** *(em avaliação)* | Necessário para transmitir atualizações de localização GPS e eventos de check-in/check-out em tempo real para o painel do gestor, escola e responsáveis sem polling excessivo. |
+| **Google OR-Tools** *(em avaliação)* | Biblioteca referência para problemas de roteamento de veículos (VRP), ideal para calcular rotas otimizadas considerando múltiplas paradas, capacidade de passageiros e vagas para cadeiras de rodas. |
+| **Firebase Cloud Messaging (FCM)** *(proposta)* | Entrega confiável de notificações push em dispositivos móveis para alertar os responsáveis no instante do embarque e desembarque. |
+
+### 🗄️ Banco de Dados e Infraestrutura
+
+| Tecnologia | Por que usar neste projeto? |
+| :--- | :--- |
+| **PostgreSQL (via Supabase)** | Banco relacional sólido, com suporte a transações ACID, constraints de unicidade/integridade e chaves estrangeiras indispensáveis para evitar duplicidade de alunos, conflitos de viagem ou falhas de alocação de vagas. |
+| **PostGIS** | Extensão geoespacial padrão de mercado para armazenar coordenadas (`SRID 4326`), calcular distâncias, indexar pontos de parada e consultar posições dos veículos com eficiência. |
+| **Supabase Storage** *(opcional)* | Armazenamento privado de documentos e arquivos com controle de acesso por URLs assinadas, mantendo dados sensíveis protegidos. |
+
+---
+
+## 🧩 5. Domínios e Modelagem Inicial (v0.1)
+
+O banco de dados e a arquitetura modular do Django são organizados em 6 domínios principais:
 
 | Domínio | Entidades Principais | Responsabilidade |
 | :--- | :--- | :--- |
-| **Administração e Acesso** | `Organization`, `User`, `OrganizationMembership` | Organizações/prefeituras, autenticação customizada e perfis de acesso |
-| **Alunos e Responsáveis** | `Student`, `Guardian`, `StudentGuardian`, `StudentNeed` | Cadastro de estudantes, múltiplos responsáveis e necessidades de deslocamento |
-| **Escolas e Vagas** | `School`, `Vacancy`, `TransportRequest`, `Enrollment` | Instituições, capacidade total/adaptada, solicitações e vínculos aprovados |
-| **Frota** | `Vehicle`, `Driver`, `Monitor` | Veículos (capacidade, cadeiras, elevador hidráulico), motoristas e monitores |
-| **Logística** | `Route`, `RouteStop`, `Trip`, `TripMonitor`, `TripStudent` | Itinerários, paradas ordenadas, execução de viagens e alocação de alunos |
-| **Operação e Monitoramento** | `AttendanceEvent`, `VehicleLocation`, `Notification`, `AuditLog` | Embarque/desembarque, histórico GPS, notificações e trilha de auditoria |
+| **Administração e Acesso** | `Organization`, `User`, `OrganizationMembership` | Multi-organização (prefeituras/instituições), usuário customizado e papéis de acesso. |
+| **Alunos e Responsáveis** | `Student`, `Guardian`, `StudentGuardian`, `StudentNeed` | Cadastro de alunos, relação N:N com responsáveis autorizados e necessidades específicas de deslocamento. |
+| **Escolas e Vagas** | `School`, `Vacancy`, `TransportRequest`, `Enrollment` | Capacidade total e adaptada por escola, fluxo de aprovação de pedidos e vínculo ativo de transporte. |
+| **Frota** | `Vehicle`, `Driver`, `Monitor` | Veículos (capacidade comum, vagas para cadeira de rodas, elevador hidráulico), CNH de motoristas e monitores. |
+| **Logística** | `Route`, `RouteStop`, `Trip`, `TripMonitor`, `TripStudent` | Rotas reutilizáveis, paradas ordenadas, execução de viagens, alocação de monitores e alunos. |
+| **Operação e Monitoramento** | `AttendanceEvent`, `VehicleLocation`, `Notification`, `AuditLog` | Eventos auditáveis de embarque/desembarque (`BOARDING`/`ALIGHTING`), histórico GPS, avisos e auditoria. |
 
 ---
 
-## 🔒 Segurança, Privacidade e LGPD
+## 🔒 6. Segurança, Privacidade e LGPD
 
-Por tratar **dados pessoais de crianças** e **informações sensíveis relacionadas à saúde/deficiência e necessidades de deslocamento**, o projeto prevê desde a concepção:
+Por tratar **dados pessoais de crianças** e **informações sensíveis de saúde/deficiência e geolocalização**, a arquitetura adota:
 
-- **Menor privilégio e isolamento por organização:** Verificação de escopo organizacional e perfil em todas as operações da API.
-- **Restrição de dados sensíveis:** `StudentNeed` e dados de localização são expostos apenas a perfis com necessidade operacional estrita.
-- **Proteção de credenciais:** Nenhuma chave privilegiada do banco/Supabase é exposta no frontend; acesso a dados passa exclusivamente pela API Django.
-- **Auditoria e retenção:** Registro de ações críticas em `AuditLog` (sem armazenar conteúdo sensível em logs) e definição de política de retenção para histórico de GPS.
+- **Menor privilégio e isolamento multi-organização:** Toda requisição na API valida o vínculo organizacional e o papel do usuário.
+- **Restrição de acesso a `StudentNeed`:** Informações de mobilidade e observações médicas ficam acessíveis apenas a quem tem necessidade operacional.
+- **Nenhuma exposição direta do banco ao frontend:** Chaves privilegiadas do Supabase nunca vão para o cliente; toda regra crítica passa pelo backend Django.
+- **Auditoria e retenção:** Registro de ações relevantes em `AuditLog` (sem expor dados sensíveis em logs ou notificações de tela bloqueada) e política de retenção para histórico de GPS.
 
 ---
 
-## 📁 Estrutura Planejada do Projeto
+## 📁 7. Estrutura Planejada do Repositório
 
 ```text
 .
@@ -101,22 +160,23 @@ Por tratar **dados pessoais de crianças** e **informações sensíveis relacion
 
 ---
 
-## 🗺️ Roadmap Inicial
+## 🗺️ 8. Roadmap de Desenvolvimento
 
-- [x] Definição de escopo, objetivos de negócio e papéis da equipe
+- [x] Definição do BRD/PRD, personas, histórias de usuário e divisão da equipe
 - [x] Modelagem inicial de dados (v0.1) e arquitetura de referência
-- [ ] Validação do DER (Diagrama Entidade-Relacionamento) e regras de negócio com a equipe
-- [ ] Configuração do ambiente PostgreSQL + PostGIS e usuário customizado no Django
-- [ ] Implementação dos módulos base (cadastros, vínculos, escolas, vagas e frota)
-- [ ] Desenvolvimento do painel administrativo e fluxo de solicitações no Frontend
-- [ ] Implementação de viagens, check-in/check-out do monitor, mapa em tempo real e notificações
+- [ ] Validação do DER (Diagrama Entidade-Relacionamento) e regras de negócio antes das migrations
+- [ ] Configuração do PostgreSQL + PostGIS e implementação do usuário customizado no Django
+- [ ] Desenvolvimento dos módulos base no backend (cadastros, escolas, vagas, solicitações e frota)
+- [ ] Estruturação do frontend Next.js + shadcn/ui + Tailwind e telas administrativas
+- [ ] Implementação de viagens, app do monitor (check-in/check-out), mapa em tempo real e notificações push
 
 ---
 
 ## 📚 Referências Técnicas
 
+- [Next.js Documentation](https://nextjs.org/docs)
+- [shadcn/ui](https://ui.shadcn.com/)
 - [Django Documentation](https://docs.djangoproject.com/)
 - [Django REST Framework](https://www.django-rest-framework.org/)
-- [Next.js Documentation](https://nextjs.org/docs)
 - [Supabase & PostGIS](https://supabase.com/docs/guides/database/extensions/postgis)
 - [Google OR-Tools](https://developers.google.com/optimization)
