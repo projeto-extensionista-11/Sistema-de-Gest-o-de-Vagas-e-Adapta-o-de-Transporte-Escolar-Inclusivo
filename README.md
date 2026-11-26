@@ -110,7 +110,7 @@ A arquitetura segue o modelo de **monólito modular no backend** (centralizando 
 
 ## 🧩 5. Domínios e Modelagem Inicial (v0.1)
 
-O banco de dados e a arquitetura modular do Django são organizados em 6 domínios principais:
+O banco de dados e a arquitetura modular do Django são organizados em 6 domínios principais (detalhes completos, dicionário de dados, cardinalidades e critérios de aceite disponíveis em [`docs/modelagem-arquitetura-v0.1.md`](docs/modelagem-arquitetura-v0.1.md)):
 
 | Domínio | Entidades Principais | Responsabilidade |
 | :--- | :--- | :--- |
@@ -154,6 +154,8 @@ Por tratar **dados pessoais de crianças** e **informações sensíveis de saúd
 │   │   ├── notifications/
 │   │   └── audit/
 │   └── manage.py
+├── docs/                     # Documentação técnica, modelagem e arquitetura
+│   └── modelagem-arquitetura-v0.1.md
 ├── frontend/                 # Aplicação Next.js + TypeScript + Tailwind (em estruturação)
 └── README.md
 ```
