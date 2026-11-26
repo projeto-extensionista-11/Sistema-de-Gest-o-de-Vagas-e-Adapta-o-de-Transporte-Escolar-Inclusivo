@@ -2,7 +2,8 @@
 
 **Projeto 11:** Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo  
 **Entregável:** Marco 1 (M1 — Protótipo de Baixa/Média Fidelidade baseado nas Personas e Cenários de Uso)  
-**Responsáveis UI/UX & Frontend:** Eduardo Guerra e Erick
+**Responsáveis UI/UX & Frontend:** Eduardo Guerra e Erick  
+**Arquivo Oficial no Figma (5 Telas Editáveis):** [🎨 Abrir Protótipo no Figma — Projeto 11 (Marco 1)](https://www.figma.com/design/caIccM5BeNfomthMS7QNVl)
 
 ---
 
