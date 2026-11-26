@@ -20,19 +20,19 @@ Utilizamos o fluxo **GitFlow** estruturado em duas branches permanentes e branch
 
 ```mermaid
 flowchart LR
-    main["main (Produção / Entregas de Marco)"]
-    develop["develop (Integração das Sprints)"]
+    main["main - Producao / Entregas de Marco"]
+    develop["develop - Integracao das Sprints"]
     feature["feature/USxx-descricao"]
     fix["fix/descricao-do-bug"]
     docs["docs/atualizacao-doc"]
 
-    develop -->|Ramifica| feature
-    develop -->|Ramifica| fix
-    develop -->|Ramifica| docs
-    feature -->|Pull Request + Code Review| develop
-    fix -->|Pull Request + Code Review| develop
-    docs -->|Pull Request + Code Review| develop
-    develop -->|Release de Marco M1..M4| main
+    develop -->|"Ramifica"| feature
+    develop -->|"Ramifica"| fix
+    develop -->|"Ramifica"| docs
+    feature -->|"Pull Request + Code Review"| develop
+    fix -->|"Pull Request + Code Review"| develop
+    docs -->|"Pull Request + Code Review"| develop
+    develop -->|"Release de Marco M1 a M4"| main
 ```
 
 ### Branches Permanentes

@@ -12,15 +12,15 @@ O sistema adapta sua estrutura de navegação e densidade de informação ao con
 
 ```mermaid
 flowchart TD
-    Login["🔐 Tela 00: Login Unificado\n(E-mail/CPF + Senha)"]
+    Login["Tela 00: Login Unificado<br/>E-mail ou CPF + Senha"]
 
-    Login -->|Perfil: MONITOR| T1["📲 Tela 01: App da Monitora (Mari)\nLista da Viagem + Check-in/Out em 1 Toque (US01)"]
-    Login -->|Perfil: DRIVER| T2["🚐 Tela 02: Painel do Motorista (Seu Valdir)\nModo Condução Limpo + Próxima Parada + GPS Voz (US09)"]
-    Login -->|Perfil: GUARDIAN| T3["👩‍👦 Tela 03: Portal da Família (Mãe Solange)\nMapa da Van ao Vivo + Linha do Tempo Push (US10)"]
-    Login -->|Perfil: FLEET_MANAGER| T4["🖥️ Tela 04: Dashboard do Gestor (Eng. Fernando)\nTelemetria em Mapa + Otimizador de Rotas + Vagas (US02)"]
-    Login -->|Perfil: SCHOOL_DIRECTOR| T5["🏫 Tela 05: Painel da Escola (Profa. Tássia)\nPrevisão de Chegada (ETA) no Portão + Cadeirantes (US11)"]
+    Login -->|"Perfil: MONITOR"| T1["Tela 01: App da Monitora Mari<br/>Lista da Viagem + Check-in e Out em 1 Toque - US01"]
+    Login -->|"Perfil: DRIVER"| T2["Tela 02: Painel do Motorista Seu Valdir<br/>Modo Conducao Limpo + Proxima Parada + GPS Voz - US09"]
+    Login -->|"Perfil: GUARDIAN"| T3["Tela 03: Portal da Familia Mae Solange<br/>Mapa da Van ao Vivo + Linha do Tempo Push - US10"]
+    Login -->|"Perfil: FLEET_MANAGER"| T4["Tela 04: Dashboard do Gestor Eng. Fernando<br/>Telemetria em Mapa + Otimizador de Rotas + Vagas - US02"]
+    Login -->|"Perfil: SCHOOL_DIRECTOR"| T5["Tela 05: Painel da Escola Profa. Tassia<br/>Previsao de Chegada ETA no Portao + Cadeirantes - US11"]
 
-    T1 -->|1 Toque: Confirmar Embarque| Evento["⚡ Disparo Instantâneo:\nAttendanceEvent (BOARDING)\n+ Push FCM + Atualização Mapa"]
+    T1 -->|"1 Toque: Confirmar Embarque"| Evento["Disparo Instantaneo:<br/>AttendanceEvent BOARDING<br/>+ Push FCM + Atualizacao Mapa"]
     Evento --> T3
     Evento --> T4
     Evento --> T5

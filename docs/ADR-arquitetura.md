@@ -28,29 +28,29 @@ Mostra como o sistema se relaciona com as **5 Personas** do projeto e com os ser
 
 ```mermaid
 flowchart TB
-    subgraph Personas["👥 Personas / Usuários do Sistema"]
-        Gestor["👨‍💼 Eng. Fernando (Gestor da Frota)\nPlaneja rotas, frota e vagas"]
-        Diretora["👩‍🏫 Profa. Tássia (Diretora Escolar)\nAcompanha previsão de chegada no portão"]
-        Monitora["🦺 Marisa 'Mari' (Monitora da Van)\nRegistra Check-in/Check-out em 1 toque"]
-        Motorista["🚐 Seu Valdir (Motorista)\nVisualiza paradas e rota otimizada"]
-        Mae["👩‍👦 Solange 'Sol' (Mãe / Responsável)\nAcompanha van no mapa e recebe alertas"]
+    subgraph Personas["Personas e Usuarios do Sistema"]
+        Gestor["Eng. Fernando - Gestor da Frota<br/>Planeja rotas, frota e vagas"]
+        Diretora["Profa. Tassia - Diretora Escolar<br/>Acompanha previsao de chegada no portao"]
+        Monitora["Marisa Mari - Monitora da Van<br/>Registra Check-in e Check-out em 1 toque"]
+        Motorista["Seu Valdir - Motorista<br/>Visualiza paradas e rota otimizada"]
+        Mae["Solange Sol - Mae ou Responsavel<br/>Acompanha van no mapa e recebe alertas"]
     end
 
-    Sistema["🚌 Sistema de Gestão de Vagas e\nTransporte Escolar Inclusivo\n(Web Portal + PWA Mobile + API)"]
+    Sistema["Sistema de Gestao de Vagas e<br/>Transporte Escolar Inclusivo<br/>Web Portal + PWA Mobile + API"]
 
-    subgraph Externos["🌐 Sistemas e Serviços Externos"]
-        Mapas["🗺️ OpenStreetMap / Mapbox\n(Tiles de Mapa e Geocodificação)"]
-        FCM["🔔 Firebase Cloud Messaging\n(Notificações Push Mobile/Web)"]
+    subgraph Externos["Sistemas e Servicos Externos"]
+        Mapas["OpenStreetMap e Mapbox<br/>Tiles de Mapa e Geocodificacao"]
+        FCM["Firebase Cloud Messaging<br/>Notificacoes Push Mobile e Web"]
     end
 
-    Gestor -->|Gerencia frota, vagas e otimiza rotas| Sistema
-    Diretora -->|Consulta ETA das vans e alunos cadeirantes| Sistema
-    Monitora -->|Confirma embarque/desembarque via smartphone| Sistema
-    Motorista -->|Consulta itinerário e próxima parada| Sistema
-    Mae -->|Solicita vaga, rastreia viagem e recebe avisos| Sistema
+    Gestor -->|"Gerencia frota, vagas e otimiza rotas"| Sistema
+    Diretora -->|"Consulta ETA das vans e alunos cadeirantes"| Sistema
+    Monitora -->|"Confirma embarque e desembarque via smartphone"| Sistema
+    Motorista -->|"Consulta itinerario e proxima parada"| Sistema
+    Mae -->|"Solicita vaga, rastreia viagem e recebe avisos"| Sistema
 
-    Sistema -->|Renderiza mapas e rotas espaciais| Mapas
-    Sistema -->|Dispara alertas instantâneos de embarque/chegada| FCM
+    Sistema -->|"Renderiza mapas e rotas espaciais"| Mapas
+    Sistema -->|"Dispara alertas instantaneos de embarque e chegada"| FCM
 ```
 
 ---
@@ -61,34 +61,34 @@ Detalha as aplicações, serviços e bancos de dados que compõem a solução e 
 
 ```mermaid
 flowchart LR
-    subgraph Cliente["📱 Camada de Apresentação (Cliente)"]
-        WebPortal["🖥️ Portal Web Administrativo\n(Next.js + TypeScript + shadcn/ui)\nPerfis: Gestor da Frota e Diretora"]
-        MobilePWA["📲 App Mobile-First / PWA\n(Next.js + Tailwind + React Query)\nPerfis: Monitora, Motorista e Responsáveis"]
+    subgraph Cliente["Camada de Apresentacao - Cliente"]
+        WebPortal["Portal Web Administrativo<br/>Next.js + TypeScript + shadcn/ui<br/>Perfis: Gestor da Frota e Diretora"]
+        MobilePWA["App Mobile-First e PWA<br/>Next.js + Tailwind + React Query<br/>Perfis: Monitora, Motorista e Responsaveis"]
     end
 
-    subgraph BackendContainer["⚙️ Camada de Aplicação (Backend)"]
-        DjangoAPI["🐍 API REST Monólito Modular\n(Python + Django + DRF)\nAutenticação, Regras de Negócio, LGPD e Auditoria"]
-        RouteEngine["🧮 Motor de Otimização Logística\n(Módulo Python + Google OR-Tools)\nCálculo de rotas para vans adaptadas (VRP)"]
-        RealtimeHub["⚡ Canal de Tempo Real\n(Django Channels / Supabase Realtime)\nStreaming de GPS e status da viagem"]
+    subgraph BackendContainer["Camada de Aplicacao - Backend"]
+        DjangoAPI["API REST Monolito Modular<br/>Python + Django + DRF<br/>Autenticacao, Regras de Negocio, LGPD e Auditoria"]
+        RouteEngine["Motor de Otimizacao Logistica<br/>Modulo Python + Google OR-Tools<br/>Calculo de rotas para vans adaptadas - VRP"]
+        RealtimeHub["Canal de Tempo Real<br/>Django Channels ou Supabase Realtime<br/>Streaming de GPS e status da viagem"]
     end
 
-    subgraph DadosContainer["🗄️ Camada de Dados e Infraestrutura"]
-        PostgresDB[("🐘 PostgreSQL + PostGIS\n(Gerenciado via Supabase)\nDados relacionais e coordenadas SRID 4326")]
-        Storage[("📁 Supabase Storage\n(Buckets Privados)\nLaudos e comprovantes com URL assinada")]
+    subgraph DadosContainer["Camada de Dados e Infraestrutura"]
+        PostgresDB[("PostgreSQL + PostGIS<br/>Gerenciado via Supabase<br/>Dados relacionais e coordenadas SRID 4326")]
+        Storage[("Supabase Storage<br/>Buckets Privados<br/>Laudos e comprovantes com URL assinada")]
     end
 
-    FCM["🔔 Firebase Cloud Messaging"]
+    FCM["Firebase Cloud Messaging"]
 
-    WebPortal -->|HTTPS / JSON REST| DjangoAPI
-    MobilePWA -->|HTTPS / JSON REST| DjangoAPI
-    WebPortal <-->|WebSocket / Realtime| RealtimeHub
-    MobilePWA <-->|WebSocket / Realtime| RealtimeHub
+    WebPortal -->|"HTTPS / JSON REST"| DjangoAPI
+    MobilePWA -->|"HTTPS / JSON REST"| DjangoAPI
+    RealtimeHub -->|"WebSocket / Realtime"| WebPortal
+    RealtimeHub -->|"WebSocket / Realtime"| MobilePWA
 
-    DjangoAPI -->|Invoca cálculo de itinerário| RouteEngine
-    DjangoAPI -->|ORM Django / GeoDjango (TLS)| PostgresDB
-    DjangoAPI -->|Upload/Download seguro| Storage
-    DjangoAPI -->|Publica eventos de viagem| RealtimeHub
-    DjangoAPI -->|Envia Push no Check-in/Check-out| FCM
+    DjangoAPI -->|"Invoca calculo de itinerario"| RouteEngine
+    DjangoAPI -->|"ORM Django / GeoDjango via TLS"| PostgresDB
+    DjangoAPI -->|"Upload e Download seguro"| Storage
+    DjangoAPI -->|"Publica eventos de viagem"| RealtimeHub
+    DjangoAPI -->|"Envia Push no Check-in e Check-out"| FCM
 ```
 
 ---
@@ -99,23 +99,23 @@ Representa a divisão interna dos módulos de domínio (`apps/`) dentro do monó
 
 ```mermaid
 flowchart TB
-    subgraph Core["🔐 Núcleo e Governança"]
-        Accounts["accounts\n(User customizado, Auth, JWT)"]
-        Organizations["organizations\n(Prefeituras, Vínculos e Papéis)"]
-        Audit["audit\n(AuditLog e Rastreabilidade LGPD)"]
+    subgraph Core["Nucleo e Governanca"]
+        Accounts["accounts<br/>User customizado, Auth, JWT"]
+        Organizations["organizations<br/>Prefeituras, Vinculos e Papeis"]
+        Audit["audit<br/>AuditLog e Rastreabilidade LGPD"]
     end
 
-    subgraph Cadastros["🏫 Domínio Escolar e Inclusão"]
-        Students["students\n(Student, StudentNeed restrito)"]
-        Guardians["guardians\n(Guardian, StudentGuardian)"]
-        Schools["schools & vacancies\n(School, Vacancy, TransportRequest, Enrollment)"]
+    subgraph Cadastros["Dominio Escolar e Inclusao"]
+        Students["students<br/>Student, StudentNeed restrito"]
+        Guardians["guardians<br/>Guardian, StudentGuardian"]
+        Schools["schools e vacancies<br/>School, Vacancy, TransportRequest, Enrollment"]
     end
 
-    subgraph Operacao["🚐 Domínio Logístico e Operacional"]
-        Fleet["fleet\n(Vehicle c/ elevador, Driver, Monitor)"]
-        Routes["routes\n(Route, RouteStop, Otimizador OR-Tools)"]
-        Trips["trips\n(Trip, TripMonitor, TripStudent, AttendanceEvent)"]
-        Tracking["tracking & notifications\n(VehicleLocation PostGIS, Notification)"]
+    subgraph Operacao["Dominio Logistico e Operacional"]
+        Fleet["fleet<br/>Vehicle com elevador, Driver, Monitor"]
+        Routes["routes<br/>Route, RouteStop, Otimizador OR-Tools"]
+        Trips["trips<br/>Trip, TripMonitor, TripStudent, AttendanceEvent"]
+        Tracking["tracking e notifications<br/>VehicleLocation PostGIS, Notification"]
     end
 
     Core --> Cadastros
@@ -129,14 +129,14 @@ flowchart TB
 
 ```mermaid
 flowchart LR
-    UserDevice["💻 / 📱 Navegador Desktop ou Smartphone"]
-    Vercel["▲ Vercel Cloud\n(Hospedagem Frontend Next.js + Edge CDN)"]
-    Render["☁️ Render / Railway\n(Container Backend Django + Gunicorn)"]
-    SupabaseCloud["🟢 Supabase Cloud\n(PostgreSQL 16 + PostGIS + Storage Privado)"]
+    UserDevice["Navegador Desktop ou Smartphone"]
+    Vercel["Vercel Cloud<br/>Hospedagem Frontend Next.js + Edge CDN"]
+    Render["Render ou Railway<br/>Container Backend Django + Gunicorn"]
+    SupabaseCloud["Supabase Cloud<br/>PostgreSQL 16 + PostGIS + Storage Privado"]
 
-    UserDevice -->|HTTPS / TLS 1.3| Vercel
-    Vercel -->|API Requests HTTPS| Render
-    Render -->|Conexão Segura Pooler / SSL| SupabaseCloud
+    UserDevice -->|"HTTPS / TLS 1.3"| Vercel
+    Vercel -->|"API Requests HTTPS"| Render
+    Render -->|"Conexao Segura Pooler / SSL"| SupabaseCloud
 ```
 
 ---
