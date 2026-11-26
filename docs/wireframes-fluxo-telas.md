@@ -1,9 +1,9 @@
 # 🖼️ Protótipo de Baixa/Média Fidelidade (Wireframes e Fluxos de Tela)
 
-**Projeto 11:** Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo  
+**Projeto 16:** Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo  
 **Entregável:** Marco 1 (M1 — Protótipo de Baixa/Média Fidelidade baseado nas Personas e Cenários de Uso)  
 **Responsáveis UI/UX & Frontend:** Eduardo Guerra e Erick  
-**Arquivo Oficial no Figma (5 Telas Editáveis):** [🎨 Abrir Protótipo no Figma — Projeto 11 (Marco 1)](https://www.figma.com/design/caIccM5BeNfomthMS7QNVl)
+**Arquivo Oficial no Figma (5 Telas Editáveis):** [🎨 Abrir Protótipo no Figma — Projeto 16 (Marco 1)](https://www.figma.com/design/caIccM5BeNfomthMS7QNVl)
 
 ---
 

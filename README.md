@@ -1,4 +1,4 @@
-﻿# 🚌 Projeto 11: Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo
+﻿# 🚌 Projeto 16: Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo
 
 > Módulo logístico integrado ao transporte público e escolar para gestão de vagas, otimização de rotas de vans adaptadas (com elevador hidráulico) e monitoramento em tempo real do embarque e desembarque de estudantes com deficiência (**LBI — Lei Brasileira de Inclusão, Art. 28 e 48**).
 

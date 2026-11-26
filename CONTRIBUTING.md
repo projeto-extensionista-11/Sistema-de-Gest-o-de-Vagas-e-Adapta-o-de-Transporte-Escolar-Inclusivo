@@ -1,6 +1,6 @@
 # 🤝 Guia de Contribuição e Engenharia Colaborativa (`CONTRIBUTING.md`)
 
-Bem-vindo(a) ao repositório do **Projeto 11 — Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo**. Este documento define o fluxo de versionamento (**GitFlow**), padrões de nomenclatura de branches, convenção de commits, abertura de Pull Requests e critérios de Code Review adotados pela equipe.
+Bem-vindo(a) ao repositório do **Projeto 16 — Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo**. Este documento define o fluxo de versionamento (**GitFlow**), padrões de nomenclatura de branches, convenção de commits, abertura de Pull Requests e critérios de Code Review adotados pela equipe.
 
 ---
 

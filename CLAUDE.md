@@ -1,6 +1,6 @@
 # CLAUDE.md — Guia de Contexto e Regras do Design System (Figma MCP)
 
-Este arquivo fornece contexto imediato para assistentes de IA e para o servidor **Figma MCP** ao traduzir protótipos em código ou inspecionar a arquitetura do **Projeto 11: Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo**.
+Este arquivo fornece contexto imediato para assistentes de IA e para o servidor **Figma MCP** ao traduzir protótipos em código ou inspecionar a arquitetura do **Projeto 16: Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo**.
 
 ## 1. Resumo da Stack
 - **Frontend:** Next.js (App Router) + React + TypeScript + Tailwind CSS + `shadcn/ui` (Radix UI) + `TanStack Query` + `React Hook Form` + `Zod` + `react-leaflet` + `lucide-react`.

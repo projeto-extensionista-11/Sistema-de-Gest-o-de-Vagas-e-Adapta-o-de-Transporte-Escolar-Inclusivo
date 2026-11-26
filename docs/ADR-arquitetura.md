@@ -1,6 +1,6 @@
 # 🏛️ Documento de Arquitetura e Decisões Tecnológicas (ADR)
 
-**Projeto 11:** Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo  
+**Projeto 16:** Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo  
 **Entregável:** Marco 1 (M1 — Imersão no Problema, Planejamento da Arquitetura e Setup da Engenharia)  
 **Versão:** 1.0 | **Data:** Novembro de 2026  
 **Autores:** Eduardo Guerra, Erick, Rita, Edmilson e Karina

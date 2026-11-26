@@ -1,6 +1,6 @@
 # 📋 Backlog do Produto, Planejamento de Sprints e Quadro Kanban
 
-**Projeto 11:** Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo  
+**Projeto 16:** Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo  
 **Metodologia Ágil:** Scrumban (Ciclos de Sprints alinhados aos Marcos M1–M4 + Fluxo Contínuo em Quadro Kanban)  
 **Escala de Pontuação:** Story Points em Fibonacci (`1`, `2`, `3`, `5`, `8`, `13`)
 

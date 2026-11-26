@@ -1,6 +1,6 @@
 # 🎨 Regras do Design System e Guia de Integração Figma-to-Code
 
-**Projeto 11:** Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo  
+**Projeto 16:** Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo  
 **Referência:** Especificação gerada via `/mcp:figma_figma:create_design_system_rules`  
 **Responsáveis Frontend & UI/UX:** Eduardo Guerra e Erick
 
