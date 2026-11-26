@@ -134,11 +134,32 @@ Por tratar **dados pessoais de crianças** e **informações sensíveis de saúd
 
 ---
 
-## 📁 7. Estrutura Planejada do Repositório
+## 📑 7. Índice de Documentação e Entregáveis (Marco 1 — M1)
+
+Todos os artefatos exigidos no **Marco 1 (Imersão no Problema, Planejamento da Arquitetura e Setup da Engenharia)** estão versionados e organizados neste repositório:
+
+| Entregável do Marco 1 | Arquivo / Localização | Conteúdo Principal |
+| :--- | :--- | :--- |
+| **1. BRD, PRD e Personas** | [`docs/premissa_projeto.md`](docs/premissa_projeto.md) | Problema, metas (LBI Art. 28 e 48), mapa `As-Is / To-Be`, `US01`, `US02` e as 5 Personas. |
+| **2. Arquitetura, ADRs e C4** | [`docs/ADR-arquitetura.md`](docs/ADR-arquitetura.md) | `ADR-001` a `ADR-005` + Diagramas C4 (Contexto, Contêineres, Módulos Django e Infraestrutura Cloud). |
+| **3. Modelagem de Dados (v0.1)** | [`docs/modelagem-arquitetura-v0.1.md`](docs/modelagem-arquitetura-v0.1.md) | Dicionário completo das 23 entidades em 6 domínios, cardinalidades, regras de integridade e LGPD. |
+| **4. Backlog, Sprints e Kanban** | [`docs/backlog-sprint-planning.md`](docs/backlog-sprint-planning.md) | Épicos, 16 Histórias de Usuário/Entregáveis pontuadas em *Story Points* (Fibonacci) e distribuídas nos Marcos M1 a M4. |
+| **5. Wireframes e Fluxo de Telas** | [`docs/wireframes-fluxo-telas.md`](docs/wireframes-fluxo-telas.md) | Fluxo de navegação e protótipos de baixa/média fidelidade para as 5 Personas (Monitora, Motorista, Mãe, Gestor e Diretora). |
+| **6. Design System & Figma MCP** | [`docs/design-system-rules.md`](docs/design-system-rules.md) & [`CLAUDE.md`](CLAUDE.md) | Tokens de alto contraste (WCAG AA/AAA), componentes `shadcn/ui`, alvos de toque `>= 56px` e regras Figma-to-Code. |
+| **7. Governança e GitFlow** | [`CONTRIBUTING.md`](CONTRIBUTING.md) & [`LICENSE`](LICENSE) | Estratégia de branches (`main`, `develop`, `feature/*`), Conventional Commits, Code Review e Licença MIT. |
+| **8. Templates de Colaboração** | [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md) & [`.github/ISSUE_TEMPLATE/user_story.md`](.github/ISSUE_TEMPLATE/user_story.md) | Padronização automática de Pull Requests e cadastro de Histórias de Usuário no GitHub Issues/Projects. |
+
+---
+
+## 📁 8. Estrutura do Repositório
 
 ```text
 .
-├── backend/                  # API modular em Django + DRF
+├── .github/                  # Governança de Engenharia Colaborativa
+│   ├── ISSUE_TEMPLATE/
+│   │   └── user_story.md     # Template padrão de História de Usuário para o Kanban
+│   └── PULL_REQUEST_TEMPLATE.md
+├── backend/                  # API modular em Django + DRF (planejada para M2..M4)
 │   ├── config/
 │   ├── apps/
 │   │   ├── accounts/
@@ -154,24 +175,37 @@ Por tratar **dados pessoais de crianças** e **informações sensíveis de saúd
 │   │   ├── notifications/
 │   │   └── audit/
 │   └── manage.py
-├── docs/                     # Documentação técnica, modelagem e arquitetura
+├── docs/                     # Documentação Técnica, Arquitetura, Backlog e UX
+│   ├── ADR-arquitetura.md
+│   ├── backlog-sprint-planning.md
+│   ├── design-system-rules.md
 │   ├── modelagem-arquitetura-v0.1.md
-│   └── premissa_projeto.md
-├── frontend/                 # Aplicação Next.js + TypeScript + Tailwind (em estruturação)
-└── README.md
+│   ├── premissa_projeto.md
+│   └── wireframes-fluxo-telas.md
+├── frontend/                 # Aplicação Next.js + TypeScript + Tailwind + shadcn/ui
+├── .gitignore                # Exclusão de artefatos Python, Node, .env e IDEs
+├── CLAUDE.md                 # Regras de contexto e integração Figma MCP
+├── CONTRIBUTING.md           # Guia de GitFlow, Conventional Commits e Code Review
+├── LICENSE                   # Licença de Software Livre (MIT)
+└── README.md                 # Visão executiva do projeto
 ```
 
 ---
 
-## 🗺️ 8. Roadmap de Desenvolvimento
+## 🗺️ 9. Cronograma de Marcos e Entregas
 
-- [x] Definição do BRD/PRD, personas, histórias de usuário e divisão da equipe
-- [x] Modelagem inicial de dados (v0.1) e arquitetura de referência
-- [ ] Validação do DER (Diagrama Entidade-Relacionamento) e regras de negócio antes das migrations
-- [ ] Configuração do PostgreSQL + PostGIS e implementação do usuário customizado no Django
-- [ ] Desenvolvimento dos módulos base no backend (cadastros, escolas, vagas, solicitações e frota)
-- [ ] Estruturação do frontend Next.js + shadcn/ui + Tailwind e telas administrativas
-- [ ] Implementação de viagens, app do monitor (check-in/check-out), mapa em tempo real e notificações push
+- [x] **MÊS 01 — Iniciação & Setup (Entrega: 02/12/2026 | Peso: 10%)**
+  - [x] Definição de equipe, BRD/PRD, personas e histórias de usuário
+  - [x] Modelagem de dados v0.1 (23 entidades) e documento de ADRs + Diagramas C4
+  - [x] Estruturação do repositório GitHub (`README`, `CONTRIBUTING`, `LICENSE`, GitFlow `main`/`develop` e templates)
+  - [x] Backlog do produto mapeado em Sprints com *Story Points*
+  - [x] Regras do Design System inclusivo e especificação de Wireframes das 5 personas
+- [ ] **MÊS 02 — Desenvolvimento I (Entrega: 13/01/2027 | Peso: 15%)**
+  - [ ] Setup PostgreSQL + PostGIS, autenticação multi-perfil (`US03`) e cadastros base (`US04` a `US07`)
+- [ ] **MÊS 03 — Desenvolvimento II (Entrega: 17/02/2027 | Peso: 15%)**
+  - [ ] Otimizador de rotas (`US02`), gestão de viagens (`US08`), App do Monitor com Check-in/Out em 1 toque (`US01`) e painel do motorista (`US09`)
+- [ ] **MÊS 04 — Polimento & Publicação em Nuvem (Entrega: 17/03/2027 | Peso: 60%)**
+  - [ ] Rastreamento em tempo real e notificações push para famílias (`US10`), painel da escola (`US11`), telemetria/auditoria LGPD e deploy Cloud (`US12`)
 
 ---
 
