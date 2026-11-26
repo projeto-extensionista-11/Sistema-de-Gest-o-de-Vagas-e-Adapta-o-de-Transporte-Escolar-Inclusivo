@@ -2,7 +2,8 @@
 
 **Projeto 16:** Sistema de Gestão de Vagas e Adaptação de Transporte Escolar Inclusivo  
 **Metodologia Ágil:** Scrumban (Ciclos de Sprints alinhados aos Marcos M1–M4 + Fluxo Contínuo em Quadro Kanban)  
-**Escala de Pontuação:** Story Points em Fibonacci (`1`, `2`, `3`, `5`, `8`, `13`)
+**Escala de Pontuação:** Story Points em Fibonacci (`1`, `2`, `3`, `5`, `8`, `13`)  
+**Quadro Kanban Oficial (Trello):** [📋 Abrir Quadro Kanban no Trello — Projeto 16](https://trello.com/b/mrON8JzB/projeto-16-transporte-escolar-inclusivo-kanban-backlog)
 
 ---
 
